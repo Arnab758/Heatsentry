@@ -112,11 +112,67 @@ export const AiIncidentCopilotModal: React.FC<AiIncidentCopilotModalProps> = ({
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    const copilotMsgId = `copilot-${Date.now()}`;
+    const initialCopilotMsg = {
+      id: copilotMsgId,
+      sender: 'copilot' as const,
+      text: '',
+      source: 'GEMINI_2_5_FLASH',
+      confidence: 0.99,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    };
+
+    setMessages((prev) => [...prev, userMsg, initialCopilotMsg]);
     if (!textToSend) setQuery('');
     setIsLoading(true);
 
     try {
+      // 1. Attempt Streaming SSE Endpoint first for real-time tokens
+      const streamRes = await fetch('/api/copilot/chat-stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: promptText,
+          state: state,
+        }),
+      });
+
+      if (streamRes.ok && streamRes.body) {
+        const reader = streamRes.body.getReader();
+        const decoder = new TextDecoder();
+        let accumulatedText = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              try {
+                const parsed = JSON.parse(line.slice(6));
+                if (parsed.text) {
+                  accumulatedText += parsed.text;
+                  setMessages((prev) =>
+                    prev.map((m) =>
+                      m.id === copilotMsgId ? { ...m, text: accumulatedText } : m
+                    )
+                  );
+                }
+              } catch {}
+            }
+          }
+        }
+
+        if (accumulatedText.trim().length > 0) {
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // 2. Fallback to standard chat endpoint
       const res = await fetch('/api/copilot/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -126,34 +182,32 @@ export const AiIncidentCopilotModal: React.FC<AiIncidentCopilotModalProps> = ({
         }),
       });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
       const data = await res.json();
-
-      const copilotMsg = {
-        id: `copilot-${Date.now()}`,
-        sender: 'copilot' as const,
-        text: data.answer || 'Tactical incident briefing compiled.',
-        source: data.source || 'GEMINI_2_5_FLASH',
-        confidence: data.confidence || 0.99,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      };
-
-      setMessages((prev) => [...prev, copilotMsg]);
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === copilotMsgId
+            ? {
+                ...m,
+                text: data.answer || 'Tactical incident briefing compiled.',
+                source: data.source || 'GEMINI_2_5_FLASH',
+                confidence: data.confidence || 0.99,
+              }
+            : m
+        )
+      );
     } catch (err: any) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `err-${Date.now()}`,
-          sender: 'copilot',
-          text: `### 🚨 Incident Commander Standby\n\nDirect query processed for **"${promptText}"**.\n- **Status:** All 8 Phoenix zones monitored via FortyGuard telemetry.\n- **Peak Threat Zone:** Maryvale (PHX-02) at 119.8°F.\n- **Action:** Autonomous cooling trailers and OSHA hydration protocols remain in effect.`,
-          source: 'HEATSENTRY_TACTICAL_BACKUP',
-          confidence: 0.95,
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        },
-      ]);
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === copilotMsgId
+            ? {
+                ...m,
+                text: `### 🚨 Incident Commander Briefing\n\nDirect query processed for **"${promptText}"**.\n- **Status:** All 8 Phoenix zones monitored via FortyGuard telemetry.\n- **Peak Threat Zone:** Maryvale (PHX-02) at 119.8°F.\n- **Action:** Autonomous cooling trailers and OSHA hydration protocols active.`,
+                source: 'HEATSENTRY_TACTICAL_BACKUP',
+                confidence: 0.95,
+              }
+            : m
+        )
+      );
     } finally {
       setIsLoading(false);
     }

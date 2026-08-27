@@ -176,22 +176,50 @@ export const FortyGuardIntegrationModal: React.FC<FortyGuardModalProps> = ({
               <div>
                 <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Radio className="w-3.5 h-3.5 text-cyan-400" />
-                  API Endpoint Status
+                  API Endpoint & Key Manager
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <div className={`w-2.5 h-2.5 rounded-full ${statusData?.has_key ? 'bg-emerald-500' : 'bg-cyan-500'}`} />
+                  <div className={`w-2.5 h-2.5 rounded-full ${statusData?.has_key ? 'bg-emerald-500 animate-pulse' : 'bg-cyan-500'}`} />
                   <span className="font-semibold text-white text-sm">
-                    {statusData?.has_key ? 'FortyGuard Live API Connected' : 'Calibrated Microclimate Model'}
+                    {statusData?.has_key ? 'FortyGuard Live Enterprise API Connected' : 'FortyGuard Calibrated Microclimate Model'}
                   </span>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed font-mono">
-                  Endpoint: https://api.fortyguard.com/v1
+                  Base URL: https://api.fortyguard.com/v1
                   <br />
-                  Key: {statusData?.masked_key || 'Environment Managed'}
+                  Key: <span className="text-cyan-300 font-bold">{statusData?.masked_key || 'Environment Managed'}</span>
                 </p>
+
+                {/* API Key Input Form */}
+                <div className="mt-3 pt-2 border-t border-slate-800/80">
+                  <label className="text-[11px] text-slate-400 block mb-1 font-sans">
+                    Configure Custom FortyGuard API Key
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="password"
+                      placeholder="Paste FortyGuard API Bearer Key..."
+                      value={inputKey}
+                      onChange={(e) => setInputKey(e.target.value)}
+                      className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
+                    />
+                    <button
+                      onClick={handleSaveKey}
+                      disabled={isSavingKey || !inputKey.trim()}
+                      className="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 disabled:opacity-40 text-white rounded-lg text-xs font-bold transition cursor-pointer"
+                    >
+                      {isSavingKey ? 'Verifying...' : 'Set Key'}
+                    </button>
+                  </div>
+                  {saveMessage && (
+                    <div className="mt-1.5 text-[11px] text-emerald-400 font-medium">
+                      {saveMessage}
+                    </div>
+                  )}
+                </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+              <div className="mt-3 pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
                 <span>Session Queries: <strong className="text-white font-mono">{usageData?.session_calls ?? 0}</strong></span>
                 <span>Cache Hits: <strong className="text-emerald-400 font-mono">{usageData?.cache_hits ?? 0}</strong></span>
               </div>
