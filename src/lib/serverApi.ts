@@ -12,6 +12,8 @@ import { runNeuralAgentNegotiation } from './neuralNegotiationEngine';
 import { runMonteCarloSimulation } from './monteCarloEngine';
 import { globalCryptoLedger } from './cryptoLedger';
 import { globalFortyGuardManager } from './fortyguardClient';
+import { globalAgentSupervisor } from './agentSupervisor';
+import { GoogleAiModelsService } from './googleAiModelsService';
 import { ScenarioType, PlannerType, SourceType, ZoneState } from '../types/heatsentry';
 
 // Active Gemini API Key in server memory
@@ -1036,7 +1038,7 @@ Instructions:
       });
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-3.7-flash',
         contents: contextPrompt,
         config: {
           temperature: 0.3,
@@ -1049,7 +1051,7 @@ Instructions:
         status: 200,
         data: {
           answer: generatedText || generateSmartFallback(queryText),
-          source: 'GEMINI_2_5_FLASH',
+          source: 'GEMINI_3_7_FLASH',
           confidence: 0.99,
         },
       };
@@ -1229,6 +1231,77 @@ const ttsAudioCache = new Map<string, { contentType: string; buffer: Buffer }>()
     return {
       status: 500,
       data: { error: 'Failed to synthesize TTS audio' },
+    };
+  }
+
+  // 24. POST /api/gemma/triage (Google Gemma Edge Field Triage Agent)
+  if (path === '/api/gemma/triage' && method === 'POST') {
+    const { zone_id, temperature_f, wbgt_f, outdoor_workers } = bodyData || {};
+    const result = await GoogleAiModelsService.runGemmaEdgeTriage(
+      zone_id || 'PHX-02',
+      temperature_f || 119.8,
+      wbgt_f || 89.2,
+      outdoor_workers || 4200
+    );
+    return {
+      status: 200,
+      data: result,
+    };
+  }
+
+  // 25. POST /api/veo/plume-sim (Google Veo Generative Thermal Plume Video Simulator)
+  if (path === '/api/veo/plume-sim' && method === 'POST') {
+    const { zone_name, base_temp_f, misting_trailers } = bodyData || {};
+    const result = await GoogleAiModelsService.runVeoThermalPlumeSim(
+      zone_name || 'Maryvale Urban Core',
+      base_temp_f || 118.5,
+      misting_trailers || 4
+    );
+    return {
+      status: 200,
+      data: result,
+    };
+  }
+
+  // 26. POST /api/lyria/siren-synth (Google Lyria Adaptive Acoustic Siren Synthesizer)
+  if (path === '/api/lyria/siren-synth' && method === 'POST') {
+    const { severity } = bodyData || {};
+    const result = await GoogleAiModelsService.runLyriaAcousticSynth(
+      severity || 'EXTREME_CRITICAL'
+    );
+    return {
+      status: 200,
+      data: result,
+    };
+  }
+
+  // 27. GET /api/supervisor/stats (Multi-Agent Nexus Supervisor Circuit Breaker Stats)
+  if (path === '/api/supervisor/stats' && method === 'GET') {
+    return {
+      status: 200,
+      data: {
+        supervisor: 'HeatSentry Autonomous Agent Supervisor',
+        version: '2.4.0',
+        standards: ['FEMA ICS-201', 'OSHA WBGT Stage 3', 'ISO 7243 Microclimate'],
+        stats: globalAgentSupervisor.getStats(),
+      },
+    };
+  }
+
+  // 28. POST /api/supervisor/validate (Inspect & Validate Agent Action Payload)
+  if (path === '/api/supervisor/validate' && method === 'POST') {
+    const { action, scenario_id, available_inventory } = bodyData || {};
+    if (!action) {
+      return { status: 400, data: { error: 'Missing action payload' } };
+    }
+    const result = globalAgentSupervisor.inspectAndValidateAction(
+      action,
+      scenario_id || 'DEFAULT',
+      available_inventory || {}
+    );
+    return {
+      status: 200,
+      data: result,
     };
   }
 

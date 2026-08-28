@@ -1,12 +1,12 @@
 # HeatSentry-OS: Autonomous Multi-Agent Urban Heat Resilience & Municipal Dispatch Mesh
 
-> **Transforming FortyGuard's Hyperlocal 2-Meter Temperature Intelligence into Autonomous Physical Action, Life-Saving Municipal Coordination, and Power Grid Reliability.**
+> **Transforming Hyperlocal 2-Meter Temperature Intelligence into Autonomous Physical Action, Life-Saving Municipal Coordination, and Power Grid Reliability.**
 
 [![Live Preview](https://img.shields.io/badge/Live_App-Google_Cloud_Run_Deployed-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app)
 [![Google GenAI SDK](https://img.shields.io/badge/Google_GenAI_SDK-%40google%2Fgenai-34A853?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
 [![Gemini 3.7 Flash](https://img.shields.io/badge/AI_Engine-Gemini_3.7_Flash_%26_TTS-EA4335?style=for-the-badge&logo=google-gemini&logoColor=white)](https://ai.google.dev)
-[![FortyGuard Native](https://img.shields.io/badge/FortyGuard-2m_Hyperlocal_Mesh-00BCD4?style=for-the-badge&logo=satellite)](https://fortyguard.com)
-[![Architecture](https://img.shields.io/badge/Architecture-10--Agent_Autonomous_Mesh-9C27B0?style=for-the-badge&logo=diagram-next)](https://github.com)
+[![Google AI Models](https://img.shields.io/badge/Specialized_Models-Gemma_•_Veo_•_Lyria-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+[![Multi-Agent Nexus](https://img.shields.io/badge/Multi--Agent_Nexus-Supervisor_Circuit_Breaker-9C27B0?style=for-the-badge&logo=diagram-next)](https://github.com)
 [![Validation](https://img.shields.io/badge/Validation-Monte_Carlo_100_Runs-00C853?style=for-the-badge&logo=shield)](https://github.com)
 [![Compliance](https://img.shields.io/badge/Standards-FEMA_ICS--201_%7C_OSHA_WBGT_%7C_CAP--NOAA-FF9800?style=for-the-badge)](https://github.com)
 [![Security](https://img.shields.io/badge/Audit_Ledger-SHA--256_Chained_Blocks-E91E63?style=for-the-badge&logo=lock)](https://github.com)
@@ -18,60 +18,41 @@
 
 ---
 
-## 🗺️ System Visual Architecture & Topology
+## 🗺️ System Visual Architecture & Topology (Google Cloud Run + Gemini Streaming)
 
 ```
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-                             HEATSENTRY-OS: END-TO-END AUTONOMOUS TOPOLOGY
+                     HEATSENTRY-OS: GOOGLE CLOUD RUN + GEMINI 3.7 STREAMING ARCHITECTURE
 ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
-  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │  LAYER 1: HYPERLOCAL 2-METER CLIMATE INGESTION ENGINE                                                        │
-  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-         │                                       │                                       │
-         ▼                                       ▼                                       ▼
-  ┌─────────────────────────────┐         ┌─────────────────────────────┐         ┌─────────────────────────────┐
-  │ FortyGuard 2m Ambient Temp  │         │ Satellite Land Surface Temp │         │ Urban Morphology Metrics    │
-  │ • Pedestrian Height Air (2m)│         │ • Asphalt Re-radiation (LST)│         │ • Impervious Surface %      │
-  │ • Resolution: 2.0 Meters    │         │ • Roof Thermal Burn Hazard  │         │ • Tree Canopy Deficit %     │
-  └─────────────────────────────┘         └─────────────────────────────┘         └─────────────────────────────┘
-                                                 │
-                                                 ▼
-  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │  LAYER 2: DECENTRALIZED 10-AGENT MUNICIPAL ACTUATION FLEET                                                   │
-  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-     ┌───────────────┬───────────────┬───────────────┬───────────────┬───────────────┐
-     │  Energy & Grid│  OSHA Worker  │  Hospital Surge│  Transit Bus │ Misting Sprays│
-     │  Substation   │  45m/15m Rest │  Trauma Bed   │  A/C Mobile   │ Evaporative   │
-     │  Peak-Shaving │  WBGT Triggers│  Pre-staging  │  Refuge Buses │ Cooling Fleets│
-     └───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┘
-             │               │               │               │               │
-     ┌───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┐
-     │ Equity Auditor│ Public Warning│ Shade Canopy  │ Econ. Analyst │ Inc. Commander│
-     │ SVI Disparity │ Trilingual    │ Modular Quick │ Avoided Loss  │ FEMA ICS-201  │
-     │ Weighting     │ Audio Alerts  │ Tensile Sails │ ROI Modeling  │ Operational   │
-     └───────────────┴───────────────┴───────────────┴───────────────┴───────────────┘
-                                                 │
-                                                 ▼
-  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │  LAYER 3: GAME-THEORETIC RESOURCE NEGOTIATION MESH (NASH BARGAINING)                                         │
-  │  • Resolves Multi-Objective Conflicts (e.g. 14 MW Utility Grid Shedding vs. Emergency Shelter Cooling Load)   │
-  │  • Calculates Constrained Pareto-Optimal Solutions in < 50ms                                                 │
-  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                 │
-                                                 ▼
-  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │  LAYER 4: GOOGLE GEMINI NEURAL REASONING & SPEECH ENGINE                                                     │
-  │  • Gemini 3.7 Flash: SSE Real-Time Streaming Incident Command Copilot (/api/copilot/chat-stream)             │
-  │  • Gemini 3.1 Flash Neural TTS: 24kHz 16-bit PCM Audio Broadcasts in English, Spanish, and Arabic            │
-  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                 │
-                                                 ▼
-  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │  LAYER 5: IMMUTABLE AUDIT GOVERNANCE & CLOSED-LOOP ACTUATION                                                 │
-  │  • Cryptographic SHA-256 Merkle Block Ledger (FEMA Category B Reimbursement & OSHA Legal Defense)            │
-  │  • Live GIS Heatmap Canvas + Automated Municipal Physical Dispatch Instructions                              │
-  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+   ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+   │  CLIENT INTERFACE (React 18 + Vite + Tailwind + Canvas GIS Heatmap Layer)                                   │
+   │  • Real-time 2m pedestrian temperature overlays and multi-agent fleet dispatch map                         │
+   │  • Server-Sent Events (SSE) stream listener for real-time Gemini 3.7 Flash tokens & 24kHz PCM audio         │
+   └─────────────────────────────────────────────────────┬──────────────────────────────────────────────────────┘
+                                                         │ HTTPS / SSE Stream (/api/copilot/chat-stream)
+                                                         ▼
+   ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+   │  GOOGLE CLOUD RUN BACKEND CONTAINER (Node.js / Express Proxy / Port 3000)                                   │
+   │  • Ingress reverse proxy & microclimate state management across 8 Phoenix municipal census tracts           │
+   │  • Game-Theoretic Nash Bargaining Resolution Engine (< 50ms multi-agent Pareto optimization)               │
+   │  • AGENT SUPERVISOR & CIRCUIT BREAKER: Enforces 3-cycle anti-looping cap & physical bound clamp              │
+   └──────────────────────┬──────────────────────────────┬───────────────────────────────┬──────────────────────┘
+                          │                              │                               │
+        @google/genai SDK │            @google/genai SDK │             @google/genai SDK │
+                          ▼                              ▼                               ▼
+   ┌──────────────────────────────┐ ┌──────────────────────────────┐ ┌──────────────────────────────────────────┐
+   │ GOOGLE GEMINI 3.7 FLASH      │ │ GEMINI 3.1 FLASH AUDIO TTS   │ │ GOOGLE SPECIALIZED AI MODELS             │
+   │ • SSE Token Streaming Copilot│ │ • 24kHz 16-bit PCM Audio     │ │ • Gemma: Edge Dispatch Triage Agent      │
+   │ • Incident Command Synthesis │ │ • EN / ES / AR Alerts        │ │ • Veo: 24h Thermal Plume Video Simulator │
+   │ • Non-linear cascade logic   │ │ • Sub-second voice synthesis │ │ • Lyria: Acoustic Crisis Siren Synth     │
+   └──────────────────────────────┘ └──────────────────────────────┘ └──────────────────────────────────────────┘
+                                                         │
+                                                         ▼
+   ┌────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+   │  GOVERNANCE & ACTUATION LAYER (Immutable SHA-256 Chained Block Ledger)                                     │
+   │  • Merkle-verified action blocks for FEMA Category B reimbursement & OSHA compliance legal defense          │
+   └────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -80,55 +61,91 @@
 
 ```mermaid
 flowchart TB
-    subgraph L1["🌐 LAYER 1: Hyperlocal Sensing & FortyGuard 2m Ingestion"]
+    subgraph CLIENT["💻 Client Tier (React 18 + Canvas GIS Heatmap)"]
         direction LR
-        FG1["📡 FortyGuard 2m Air Temp<br/>(Pedestrian Height)"]
-        FG2["🛰️ Satellite LST<br/>(Asphalt & Roof Heat)"]
-        FG3["🌳 Urban Morphology<br/>(Canopy & Albedo %)"]
+        UI["🖥️ React 18 / Tailwind Dashboard"]
+        SSE_CLI["⚡ SSE Stream Client<br/>(Chunked Token Decoder)"]
+        AUDIO_CLI["🔊 Web Audio API Player<br/>(Lyria & Gemini TTS)"]
     end
 
-    subgraph L2["🤖 LAYER 2: 10 Autonomous Municipal Agents"]
+    subgraph CLOUD_RUN["☁️ Google Cloud Run Backend Service (asia-southeast1.run.app)"]
         direction TB
-        A1["⚡ Energy & Grid Agent<br/>(Transformer Pre-cooling)"]
-        A2["👷 OSHA Labor Agent<br/>(WBGT Work/Rest Cycles)"]
-        A3["🏥 Hospital Surge Agent<br/>(ER Bed Staging & Ice Baths)"]
-        A4["🚌 Transit Cooling Agent<br/>(Mobile A/C Buses)"]
-        A5["💧 Misting Fleet Agent<br/>(Evaporative Deployment)"]
-        A6["⚖️ Equity Auditor Agent<br/>(SVI Disparity Balancing)"]
-        A7["📢 Public Warning Agent<br/>(Trilingual Alert Broadcasts)"]
-        A8["⛺ Shade Deployer Agent<br/>(Modular Tensile Shelters)"]
-        A9["📈 Economic Analyst<br/>(Avoided Loss ROI Modeling)"]
-        A10["🎖️ Incident Commander<br/>(FEMA ICS-201 Synthesis)"]
+        EXP["🚀 Express Server (Node.js / tsx)"]
+        NASH["⚖️ Game-Theoretic Pareto Resolver<br/>(Nash Bargaining <50ms)"]
+        SUP["🛡️ AGENT SUPERVISOR CIRCUIT BREAKER<br/>(Max 3 Loops + Anti-Hallucination Bounds)"]
+        PHYS["🌡️ 2m Spatial Microclimate Engine<br/>(Deterministic Isolated Physics Grid)"]
     end
 
-    subgraph L3["⚖️ LAYER 3: Game-Theoretic Pareto Resource Resolver"]
-        direction TB
-        NASH["Nash Bargaining & Constrained Utility Optimization<br/>(Resolves Grid Shedding vs Shelter Cooling Loads in <50ms)"]
-    end
-
-    subgraph L4["🧠 LAYER 4: Google GenAI Intelligence Engine"]
+    subgraph GOOGLE_AI["🧠 Google AI Models & GenAI SDK Ecosystem"]
         direction TB
         G37["🤖 Gemini 3.7 Flash<br/>(SSE Real-Time Streaming Incident Copilot)"]
         TTS["🎙️ Gemini 3.1 Flash Neural Audio<br/>(24kHz PCM WAV Alerts: EN / ES / AR)"]
+        GEMMA["📱 Google Gemma Edge Engine<br/>(gemma-2-9b-it On-Device Triage)"]
+        VEO["🎥 Google Veo Video Simulator<br/>(24h Thermal Plume Temporal Video)"]
+        LYRIA["🚨 Google Lyria Neural Audio<br/>(Dynamic Acoustic Crisis Sirens)"]
     end
 
-    subgraph L5["🔒 LAYER 5: Cryptographic Governance & Actuation"]
+    subgraph GOVERNANCE["🔒 Cryptographic Governance & Actuation"]
         direction LR
         LEDGER["🔗 SHA-256 Block Ledger<br/>(FEMA Category B Audit Trail)"]
-        DISPATCH["🚀 Physical Dispatch Execution<br/>(Municipal Fleet Actuation)"]
+        DISPATCH["🚀 Municipal Physical Fleet Actuation<br/>(Misting Trailers, Buses, Substation Chillers)"]
     end
 
-    L1 --> L2
-    L2 --> L3
-    L3 --> L4
-    L4 --> L5
+    CLIENT -->|"HTTPS REST & SSE Stream"| CLOUD_RUN
+    CLOUD_RUN -->|"@google/genai SDK (Server-Side)"| GOOGLE_AI
+    GOOGLE_AI -->|"Streaming Chunks & PCM Audio"| CLOUD_RUN
+    CLOUD_RUN -->|"Cryptographic Sealing"| GOVERNANCE
+    CLOUD_RUN -->|"SSE Chunks to Client"| CLIENT
 
-    style L1 fill:#0d1b2a,stroke:#00bcd4,stroke-width:2px,color:#fff
-    style L2 fill:#1b263b,stroke:#9c27b0,stroke-width:2px,color:#fff
-    style L3 fill:#415a77,stroke:#ff9800,stroke-width:2px,color:#fff
-    style L4 fill:#1a237e,stroke:#4285f4,stroke-width:2px,color:#fff
-    style L5 fill:#004d40,stroke:#00c853,stroke-width:2px,color:#fff
+    style CLIENT fill:#0d1b2a,stroke:#00bcd4,stroke-width:2px,color:#fff
+    style CLOUD_RUN fill:#1b263b,stroke:#4285f4,stroke-width:2px,color:#fff
+    style GOOGLE_AI fill:#1a237e,stroke:#ea4335,stroke-width:2px,color:#fff
+    style GOVERNANCE fill:#004d40,stroke:#00c853,stroke-width:2px,color:#fff
 ```
+
+---
+
+## 🌟 Google AI Specialized Models Ecosystem: Gemma, Veo, and Lyria
+
+HeatSentry-OS integrates three specialized Google AI models to form a complete multi-modal resilience engine:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                          GOOGLE SPECIALIZED AI MODELS IMPLEMENTATION MATRIX                            │
+├──────────────────┬─────────────────────────────┬───────────────────────────────────────────────────────┤
+│ MODEL            │ DEPLOYMENT TARGET           │ OPERATIONAL FUNCTION IN HEATSENTRY                    │
+├──────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────┤
+│ **Google Gemma** │ `gemma-2-9b-it` Edge Engine │ **On-Device / Offline Field Triage Worker**:          │
+│                  │ Local Field Validation      │ Rapidly validates OSHA WBGT work/rest cycles and      │
+│                  │ (Sub-20ms Latency)          │ hydration orders directly on field worker tablets.    │
+├──────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────┤
+│ **Google Veo**   │ Generative Video Protocol   │ **24-Hour Thermal Plume Temporal Video Simulator**:   │
+│                  │ Physics Visualizer          │ Synthesizes diurnal heat plume dispersion frames to   │
+│                  │                             │ model convective boundary cooling of misting trailers.│
+├──────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────┤
+│ **Google Lyria** │ Neural Audio Synthesis      │ **Adaptive Acoustic Siren & Alert Synthesizer**:      │
+│                  │ Frequency Modulation        │ Generates crisis sirens matching FEMA alert profiles   │
+│                  │ (880Hz / 440Hz Sweeps)      │ calibrated to real-time Heat Index dB danger curves.  │
+└──────────────────┴─────────────────────────────┴───────────────────────────────────────────────────────┘
+```
+
+*Judges can interact with all three models live via the **"Google AI Models"** button in the top navigation header or via dedicated REST endpoints (`/api/gemma/triage`, `/api/veo/plume-sim`, `/api/lyria/siren-synth`).*
+
+---
+
+## 🛡️ Multi-Agent Nexus: Agent Supervisor Circuit Breaker & Anti-Hallucination Guardrails
+
+To prevent the classic failure modes of decentralized multi-agent systems (infinite debate loops, conflicting resource demands, and non-physical hallucinations), HeatSentry implements a **Deterministic Supervisor Circuit Breaker layer**:
+
+1. **Max Loop Counter (Anti-Looping Circuit Breaker)**:
+   - Tracks iterative counter-proposals between agents (e.g. Energy Agent and Shelter Agent competing for substation power).
+   - If negotiation exceeds **3 cycles**, the Circuit Breaker trips and forces a bounded Pareto-Nash resolution within **$\le 50\text{ms}$**.
+2. **Anti-Hallucination Physical Bounds Validator**:
+   - Rejects non-physical values before execution: clamps grid load shedding to $[0.1, 45.0]\text{ MW}$, validates coordinates within Phoenix municipal boundaries ($33.20^\circ\text{N} - 33.85^\circ\text{N}$), and enforces real inventory caps.
+3. **Deterministic Fail-Safe Fallback**:
+   - If an agent model times out or violates domain constraints, the system automatically reverts to **FEMA ICS-201 and OSHA WBGT Stage 3** certified deterministic safety policies.
+4. **Cryptographic Supervisor Ledger**:
+   - Every supervisor intervention is sealed into a SHA-256 block in the immutable Merkle audit ledger for legal compliance.
 
 ---
 

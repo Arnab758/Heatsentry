@@ -37,6 +37,7 @@ interface HeaderProps {
   onOpenJudgeTour?: () => void;
   onOpenArchitecture?: () => void;
   onOpenCopilot?: () => void;
+  onOpenGoogleAiStudio?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -54,6 +55,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenJudgeTour,
   onOpenArchitecture,
   onOpenCopilot,
+  onOpenGoogleAiStudio,
 }) => {
   const [backendOnline, setBackendOnline] = React.useState<boolean | null>(null);
   const [chainBlocks, setChainBlocks] = React.useState<number | null>(null);
@@ -175,10 +177,10 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenFortyGuardModal}
               className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium border bg-cyan-950/80 border-cyan-500/40 text-cyan-300 hover:bg-cyan-900/60 hover:text-white transition cursor-pointer"
-              title="FortyGuard 2-Meter Hyperlocal Ingestion Configuration"
+              title="FortyGuard 2-Meter Hyperlocal Microclimate Model"
             >
               <Thermometer className="w-3 h-3 text-cyan-400" />
-              FortyGuard: 2m Mesh Active
+              FortyGuard: 2m Mesh Engine
             </button>
           )}
           <span
@@ -328,6 +330,19 @@ export const Header: React.FC<HeaderProps> = ({
             <option value="MONSOON_HUMIDITY">Scenario: Monsoon Humidity Spike</option>
             <option value="FLASH_HEAT_DOME">Scenario: Flash Heat Dome (121°F)</option>
           </select>
+
+          {/* Google AI Specialized Models & Nexus Studio Button */}
+          {onOpenGoogleAiStudio && (
+            <button
+              onClick={onOpenGoogleAiStudio}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/30 border border-indigo-400/50 transition-all cursor-pointer transform hover:scale-[1.02]"
+              title="Google Specialized Models (Gemma, Veo, Lyria) & Agent Supervisor Guardrails Studio"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
+              <span>Google AI Models</span>
+              <span className="px-1.5 py-0.2 bg-indigo-950 text-[9px] text-indigo-200 font-semibold rounded border border-indigo-500/40">Gemma • Veo • Lyria</span>
+            </button>
+          )}
 
           {/* Judges Tour Walkthrough Button */}
           {onOpenJudgeTour && (

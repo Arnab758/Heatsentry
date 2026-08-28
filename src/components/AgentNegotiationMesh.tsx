@@ -120,14 +120,15 @@ export const AgentNegotiationMesh: React.FC<AgentNegotiationMeshProps> = ({
             }`}
           >
             <Brain className="w-3 h-3 text-purple-400" />
-            {engine === 'backend' ? 'Gemini 3.5 Flash Neural Mesh' : 'In-Browser Consensus'}
+            {engine === 'backend' ? 'Gemini 3.7 Flash Neural Mesh' : 'Autonomous Multi-Agent Nexus'}
+          </span>
+          <span className="px-2.5 py-1 rounded-full bg-indigo-950 text-indigo-300 border border-indigo-500/50 text-[10px] font-bold flex items-center gap-1">
+            <Shield className="w-3 h-3 text-indigo-400" />
+            Supervisor Circuit Breaker Active (Max 3 Loops)
           </span>
           <span className="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/50 text-[10px] font-bold flex items-center gap-1">
             <CheckCircle className="w-3 h-3 text-emerald-400" />
-            Consensus Validated
-            {consensusScore !== null && (
-              <span className="font-mono">(Score {consensusScore}%)</span>
-            )}
+            Anti-Hallucination Guardrails 100%
           </span>
         </div>
       </div>

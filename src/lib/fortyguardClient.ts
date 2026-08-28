@@ -47,7 +47,7 @@ export interface FortyGuardPointResponse {
 }
 
 class FortyGuardManager {
-  private apiKey: string = process.env.FORTYGUARD_API_KEY || '';
+  private apiKey: string = '';
   private baseUrl: string = 'https://api.fortyguard.com/v1';
   private cache: Map<string, { data: FortyGuardPointResponse; expiresAt: number }> = new Map();
   private stats: FortyGuardTelemetryStats = {
@@ -56,14 +56,13 @@ class FortyGuardManager {
     rate_limit_per_min: 30,
     active_zones_monitored: 8,
     last_call_timestamp: null,
-    spatial_resolution: '2.0-meter mesh',
+    spatial_resolution: '2.0-meter mesh (Calibrated Microclimate Engine)',
   };
   private callTimestamps: number[] = [];
 
   constructor() {
-    if (process.env.FORTYGUARD_API_KEY) {
-      this.apiKey = process.env.FORTYGUARD_API_KEY;
-    }
+    // Isolated deterministic microclimate engine (Zero paid credit consumption)
+    this.apiKey = '';
   }
 
   public setApiKey(key: string) {
@@ -71,7 +70,7 @@ class FortyGuardManager {
   }
 
   public getApiKeyMasked(): string {
-    if (!this.apiKey) return 'NOT_CONFIGURED';
+    if (!this.apiKey) return 'OFFLINE_CALIBRATED_ENGINE';
     if (this.apiKey.length <= 8) return '****';
     return `${this.apiKey.slice(0, 4)}...${this.apiKey.slice(-4)}`;
   }

@@ -35,6 +35,7 @@ import { FortyGuardIntegrationModal } from './components/FortyGuardIntegrationMo
 import { JudgeDemoTourModal } from './components/JudgeDemoTourModal';
 import { ArchitectureModal } from './components/ArchitectureModal';
 import { AiIncidentCopilotModal } from './components/AiIncidentCopilotModal';
+import { GoogleAiModelsStudioModal } from './components/GoogleAiModelsStudioModal';
 import {
   SimulationState,
   initializeSimulation,
@@ -101,6 +102,7 @@ export default function App() {
   const [isJudgeTourOpen, setIsJudgeTourOpen] = useState<boolean>(false);
   const [isArchitectureOpen, setIsArchitectureOpen] = useState<boolean>(false);
   const [isCopilotOpen, setIsCopilotOpen] = useState<boolean>(false);
+  const [isGoogleAiStudioOpen, setIsGoogleAiStudioOpen] = useState<boolean>(false);
   const [isGeminiLoading, setIsGeminiLoading] = useState<boolean>(false);
 
   // Auto-cycle timer
@@ -393,6 +395,7 @@ export default function App() {
         onOpenJudgeTour={() => setIsJudgeTourOpen(true)}
         onOpenArchitecture={() => setIsArchitectureOpen(true)}
         onOpenCopilot={() => setIsCopilotOpen(true)}
+        onOpenGoogleAiStudio={() => setIsGoogleAiStudioOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -687,6 +690,12 @@ export default function App() {
         state={state}
         onStepSimulation={handleCycleStep}
         onSyncFortyGuard={() => handleSelectSource('FORTYGUARD_LIVE')}
+      />
+
+      {/* Google AI Specialized Models (Gemma, Veo, Lyria) & Agent Supervisor Studio */}
+      <GoogleAiModelsStudioModal
+        isOpen={isGoogleAiStudioOpen}
+        onClose={() => setIsGoogleAiStudioOpen(false)}
       />
     </div>
   );
