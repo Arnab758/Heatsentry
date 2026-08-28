@@ -18,19 +18,6 @@
 
 ---
 
-## 🏆 Hackathon Compliance & Technology Matrix
-
-HeatSentry-OS satisfies mandatory submission requirements with production implementations:
-
-| Mandatory Requirement Category | Technology Used in HeatSentry-OS | Implementation Verification in Codebase |
-| :--- | :--- | :--- |
-| **1) Gemini 3.5 or Newer** | **Gemini 3.7 Flash** (Streaming SSE Incident Copilot) + **Gemini 3.1 Flash Neural Audio** (Multilingual TTS) | `/server.ts` routes: `/api/copilot/chat-stream` (`gemini-3.7-flash`), `/api/tts` (`gemini-3.1-flash-tts-preview`) |
-| **2) Google Agent Framework** | **Official Google GenAI SDK (`@google/genai`)** | Server-side agent orchestration with system instruction grounding, FEMA ICS-201 synthesis, and token streaming |
-| **3) Google Cloud Infrastructure** | **Google Cloud Run** | Containerized microservice running live in production on Google Cloud Run (`asia-southeast1.run.app`) |
-| **4) FortyGuard Thermal Data** | **FortyGuard 2-Meter Hyperlocal Telemetry & LST** | `src/lib/fortyguardClient.ts` + `src/lib/serverApi.ts` with 2m air temp, asphalt LST, and morphology metrics |
-
----
-
 ## 🗺️ System Visual Architecture & Topology
 
 ```
