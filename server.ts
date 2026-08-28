@@ -173,7 +173,7 @@ Keep response authoritative, data-dense, and formatted in clean markdown.`;
 User Query: "${prompt || "Summarize current municipal heat risk and resource deployment."}"`;
 
       const streamResponse = await ai.models.generateContentStream({
-        model: "gemini-2.5-flash",
+        model: "gemini-3.7-flash",
         contents: [
           { role: "user", parts: [{ text: `${systemInstruction}\n\n${userContext}` }] }
         ],

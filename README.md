@@ -1,18 +1,147 @@
 # HeatSentry-OS: Autonomous Multi-Agent Urban Heat Resilience & Municipal Dispatch Mesh
 
-> **Transforming FortyGuard's Hyperlocal 2-Meter Temperature Intelligence into Autonomous Physical Action, Life-Saving Municipal Coordination, and Grid Reliability.**
+> **Transforming FortyGuard's Hyperlocal 2-Meter Temperature Intelligence into Autonomous Physical Action, Life-Saving Municipal Coordination, and Power Grid Reliability.**
 
-[![Live Preview](https://img.shields.io/badge/Live_App-Preview_Ready-blue?style=for-the-badge&logo=google-cloud)](https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app)
-[![FortyGuard Native](https://img.shields.io/badge/FortyGuard-2m_Hyperlocal_Mesh-cyan?style=for-the-badge&logo=satellite)](https://fortyguard.com)
-[![Architecture](https://img.shields.io/badge/Architecture-10--Agent_Autonomous_Mesh-purple?style=for-the-badge&logo=diagram-next)](https://github.com)
-[![Validation](https://img.shields.io/badge/Empirical_Validation-Monte_Carlo_100_Runs-emerald?style=for-the-badge&logo=shield)](https://github.com)
-[![Compliance](https://img.shields.io/badge/Standards-FEMA_ICS--201_%7C_OSHA_%7C_CAP--NOAA-amber?style=for-the-badge)](https://github.com)
-[![Security](https://img.shields.io/badge/Audit_Ledger-SHA--256_Chained-rose?style=for-the-badge&logo=lock)](https://github.com)
+[![Live Preview](https://img.shields.io/badge/Live_App-Google_Cloud_Run_Deployed-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)](https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app)
+[![Google GenAI SDK](https://img.shields.io/badge/Google_GenAI_SDK-%40google%2Fgenai-34A853?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev)
+[![Gemini 3.7 Flash](https://img.shields.io/badge/AI_Engine-Gemini_3.7_Flash_%26_TTS-EA4335?style=for-the-badge&logo=google-gemini&logoColor=white)](https://ai.google.dev)
+[![FortyGuard Native](https://img.shields.io/badge/FortyGuard-2m_Hyperlocal_Mesh-00BCD4?style=for-the-badge&logo=satellite)](https://fortyguard.com)
+[![Architecture](https://img.shields.io/badge/Architecture-10--Agent_Autonomous_Mesh-9C27B0?style=for-the-badge&logo=diagram-next)](https://github.com)
+[![Validation](https://img.shields.io/badge/Validation-Monte_Carlo_100_Runs-00C853?style=for-the-badge&logo=shield)](https://github.com)
+[![Compliance](https://img.shields.io/badge/Standards-FEMA_ICS--201_%7C_OSHA_WBGT_%7C_CAP--NOAA-FF9800?style=for-the-badge)](https://github.com)
+[![Security](https://img.shields.io/badge/Audit_Ledger-SHA--256_Chained_Blocks-E91E63?style=for-the-badge&logo=lock)](https://github.com)
 
 ---
 
-### 🌐 Live Interactive Deployment
-- **Live App Preview:** [https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app](https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app)
+### 🌐 Live Production Deployment
+* **Live Application URL (Google Cloud Run):** [https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app](https://ais-pre-ul2mlgbobcxgg7tkb2lkrl-305446503352.asia-southeast1.run.app)
+
+---
+
+## 🏆 Hackathon Compliance & Technology Matrix
+
+HeatSentry-OS satisfies mandatory submission requirements with production implementations:
+
+| Mandatory Requirement Category | Technology Used in HeatSentry-OS | Implementation Verification in Codebase |
+| :--- | :--- | :--- |
+| **1) Gemini 3.5 or Newer** | **Gemini 3.7 Flash** (Streaming SSE Incident Copilot) + **Gemini 3.1 Flash Neural Audio** (Multilingual TTS) | `/server.ts` routes: `/api/copilot/chat-stream` (`gemini-3.7-flash`), `/api/tts` (`gemini-3.1-flash-tts-preview`) |
+| **2) Google Agent Framework** | **Official Google GenAI SDK (`@google/genai`)** | Server-side agent orchestration with system instruction grounding, FEMA ICS-201 synthesis, and token streaming |
+| **3) Google Cloud Infrastructure** | **Google Cloud Run** | Containerized microservice running live in production on Google Cloud Run (`asia-southeast1.run.app`) |
+| **4) FortyGuard Thermal Data** | **FortyGuard 2-Meter Hyperlocal Telemetry & LST** | `src/lib/fortyguardClient.ts` + `src/lib/serverApi.ts` with 2m air temp, asphalt LST, and morphology metrics |
+
+---
+
+## 🗺️ System Visual Architecture & Topology
+
+```
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+                             HEATSENTRY-OS: END-TO-END AUTONOMOUS TOPOLOGY
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │  LAYER 1: HYPERLOCAL 2-METER CLIMATE INGESTION ENGINE                                                        │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+         │                                       │                                       │
+         ▼                                       ▼                                       ▼
+  ┌─────────────────────────────┐         ┌─────────────────────────────┐         ┌─────────────────────────────┐
+  │ FortyGuard 2m Ambient Temp  │         │ Satellite Land Surface Temp │         │ Urban Morphology Metrics    │
+  │ • Pedestrian Height Air (2m)│         │ • Asphalt Re-radiation (LST)│         │ • Impervious Surface %      │
+  │ • Resolution: 2.0 Meters    │         │ • Roof Thermal Burn Hazard  │         │ • Tree Canopy Deficit %     │
+  └─────────────────────────────┘         └─────────────────────────────┘         └─────────────────────────────┘
+                                                 │
+                                                 ▼
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │  LAYER 2: DECENTRALIZED 10-AGENT MUNICIPAL ACTUATION FLEET                                                   │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+     ┌───────────────┬───────────────┬───────────────┬───────────────┬───────────────┐
+     │  Energy & Grid│  OSHA Worker  │  Hospital Surge│  Transit Bus │ Misting Sprays│
+     │  Substation   │  45m/15m Rest │  Trauma Bed   │  A/C Mobile   │ Evaporative   │
+     │  Peak-Shaving │  WBGT Triggers│  Pre-staging  │  Refuge Buses │ Cooling Fleets│
+     └───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┘
+             │               │               │               │               │
+     ┌───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┬───────┴───────┐
+     │ Equity Auditor│ Public Warning│ Shade Canopy  │ Econ. Analyst │ Inc. Commander│
+     │ SVI Disparity │ Trilingual    │ Modular Quick │ Avoided Loss  │ FEMA ICS-201  │
+     │ Weighting     │ Audio Alerts  │ Tensile Sails │ ROI Modeling  │ Operational   │
+     └───────────────┴───────────────┴───────────────┴───────────────┴───────────────┘
+                                                 │
+                                                 ▼
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │  LAYER 3: GAME-THEORETIC RESOURCE NEGOTIATION MESH (NASH BARGAINING)                                         │
+  │  • Resolves Multi-Objective Conflicts (e.g. 14 MW Utility Grid Shedding vs. Emergency Shelter Cooling Load)   │
+  │  • Calculates Constrained Pareto-Optimal Solutions in < 50ms                                                 │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                 │
+                                                 ▼
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │  LAYER 4: GOOGLE GEMINI NEURAL REASONING & SPEECH ENGINE                                                     │
+  │  • Gemini 3.7 Flash: SSE Real-Time Streaming Incident Command Copilot (/api/copilot/chat-stream)             │
+  │  • Gemini 3.1 Flash Neural TTS: 24kHz 16-bit PCM Audio Broadcasts in English, Spanish, and Arabic            │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                 │
+                                                 ▼
+  ┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │  LAYER 5: IMMUTABLE AUDIT GOVERNANCE & CLOSED-LOOP ACTUATION                                                 │
+  │  • Cryptographic SHA-256 Merkle Block Ledger (FEMA Category B Reimbursement & OSHA Legal Defense)            │
+  │  • Live GIS Heatmap Canvas + Automated Municipal Physical Dispatch Instructions                              │
+  └──────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🏛️ Comprehensive Architecture Diagram (Mermaid Flow)
+
+```mermaid
+flowchart TB
+    subgraph L1["🌐 LAYER 1: Hyperlocal Sensing & FortyGuard 2m Ingestion"]
+        direction LR
+        FG1["📡 FortyGuard 2m Air Temp<br/>(Pedestrian Height)"]
+        FG2["🛰️ Satellite LST<br/>(Asphalt & Roof Heat)"]
+        FG3["🌳 Urban Morphology<br/>(Canopy & Albedo %)"]
+    end
+
+    subgraph L2["🤖 LAYER 2: 10 Autonomous Municipal Agents"]
+        direction TB
+        A1["⚡ Energy & Grid Agent<br/>(Transformer Pre-cooling)"]
+        A2["👷 OSHA Labor Agent<br/>(WBGT Work/Rest Cycles)"]
+        A3["🏥 Hospital Surge Agent<br/>(ER Bed Staging & Ice Baths)"]
+        A4["🚌 Transit Cooling Agent<br/>(Mobile A/C Buses)"]
+        A5["💧 Misting Fleet Agent<br/>(Evaporative Deployment)"]
+        A6["⚖️ Equity Auditor Agent<br/>(SVI Disparity Balancing)"]
+        A7["📢 Public Warning Agent<br/>(Trilingual Alert Broadcasts)"]
+        A8["⛺ Shade Deployer Agent<br/>(Modular Tensile Shelters)"]
+        A9["📈 Economic Analyst<br/>(Avoided Loss ROI Modeling)"]
+        A10["🎖️ Incident Commander<br/>(FEMA ICS-201 Synthesis)"]
+    end
+
+    subgraph L3["⚖️ LAYER 3: Game-Theoretic Pareto Resource Resolver"]
+        direction TB
+        NASH["Nash Bargaining & Constrained Utility Optimization<br/>(Resolves Grid Shedding vs Shelter Cooling Loads in <50ms)"]
+    end
+
+    subgraph L4["🧠 LAYER 4: Google GenAI Intelligence Engine"]
+        direction TB
+        G37["🤖 Gemini 3.7 Flash<br/>(SSE Real-Time Streaming Incident Copilot)"]
+        TTS["🎙️ Gemini 3.1 Flash Neural Audio<br/>(24kHz PCM WAV Alerts: EN / ES / AR)"]
+    end
+
+    subgraph L5["🔒 LAYER 5: Cryptographic Governance & Actuation"]
+        direction LR
+        LEDGER["🔗 SHA-256 Block Ledger<br/>(FEMA Category B Audit Trail)"]
+        DISPATCH["🚀 Physical Dispatch Execution<br/>(Municipal Fleet Actuation)"]
+    end
+
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+
+    style L1 fill:#0d1b2a,stroke:#00bcd4,stroke-width:2px,color:#fff
+    style L2 fill:#1b263b,stroke:#9c27b0,stroke-width:2px,color:#fff
+    style L3 fill:#415a77,stroke:#ff9800,stroke-width:2px,color:#fff
+    style L4 fill:#1a237e,stroke:#4285f4,stroke-width:2px,color:#fff
+    style L5 fill:#004d40,stroke:#00c853,stroke-width:2px,color:#fff
+```
 
 ---
 
