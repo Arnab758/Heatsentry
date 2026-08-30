@@ -320,6 +320,10 @@ HeatSentry is designed from day one as a commercial B2G / Enterprise B2B SaaS pl
 │ (Roofing, Warehousing, Roads)  │ catastrophic worker injury     │ per contractor enterprise     │
 └────────────────────────────────┴────────────────────────────────┴───────────────────────────────┘
 ```
+##Fortyguard Live Integration 
+<img width="1886" height="900" alt="Screenshot 2026-08-30 203251" src="https://github.com/user-attachments/assets/6b24fcca-1f14-4702-a3d3-be59e7261f97" />
+<img width="1890" height="897" alt="Screenshot 2026-08-30 202828" src="https://github.com/user-attachments/assets/42c6e1e1-6047-4a01-a4a8-75a0ce65a73d" />
+
 
 ---
 
